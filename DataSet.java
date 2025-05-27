@@ -5,14 +5,23 @@ public class DataSet {
     
     public DataSet(ArrayList<Double> d) {
         data = d;
-        for (int i = 0; i < d.size(); i++) {
-            for(int j = i; j < d.size(); j++) {
-                double min = d.get(i);
-                if(d.get(j) < min) {
-                    double temp = 
+        int indexOfMin = 0;
+        double min = data.get(0);
+        for (int i = 0; i < data.size(); i++) {
+            for(int j = i; j < data.size(); j++) {
+                if(data.get(j) < min) {
+                    min = data.get(j);
+                    indexOfMin = j;
                 } 
+                }
+                double temp = data.get(i);
+                if(temp > min) {
+                    data.set(indexOfMin, temp);
+                    data.set(i, min);
             }
+
         }
+        System.out.println(data);
 
     }
 }
